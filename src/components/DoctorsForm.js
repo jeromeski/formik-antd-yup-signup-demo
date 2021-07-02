@@ -13,6 +13,8 @@ import FormCheckbox from './FormCheckbox';
 import FormModal from './FormModal';
 import FormRadio from './FormRadio';
 
+// ========== Data Start ===========
+
 const initialValues = {
   fname: '',
   lname: '',
@@ -41,9 +43,16 @@ const doctorTypeOptions = [
   { label: 'Specialist', value: 'dtOption2' }
 ];
 
-const onSubmit = (values) => {
-  console.log(values);
-};
+const pwordModalData = () => (
+  <div>
+    <h4>Password should contain:</h4>
+    <p>- minimum eight characters</p>
+    <p>- one uppercase letter</p>
+    <p>- one lowercase letter</p>
+    <p>- one number</p>
+    <p>- one special character (@$!%*?&)</p>
+  </div>
+);
 
 const validationSchema = Yup.object({
   fname: Yup.string().required('First name is required'),
@@ -80,8 +89,15 @@ const consentLabel = () => (
   </span>
 );
 
+// ========== Data End ===========
+
 function DoctorsForm() {
   const [isModalVisible, setIsModalVisible] = useState(false);
+
+  // formik onsubmit
+  const onSubmit = (values) => {
+    console.log(values);
+  };
 
   const handleOk = () => {
     setIsModalVisible(false);
@@ -228,6 +244,7 @@ function DoctorsForm() {
         isModalVisible={isModalVisible}
         handleOk={handleOk}
         handleCancel={handleCancel}
+        data={pwordModalData}
       />
     </React.Fragment>
   );

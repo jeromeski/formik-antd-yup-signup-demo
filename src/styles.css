@@ -48,10 +48,11 @@
 .ant-input-focused {
   /* border-color: #40a9ff; */
   /* border-right-width: 1px !important; */
-  outline: 0;
+  outline: 0 !important;
   box-shadow: none;
 }
 
+/* Antd Tabs */
 .ant-tabs-card.ant-tabs-top > .ant-tabs-nav .ant-tabs-tab-active,
 .ant-tabs-card.ant-tabs-top > div > .ant-tabs-nav .ant-tabs-tab-active {
   border-bottom-color: violet;
@@ -68,4 +69,12 @@
 .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
   color: violet;
   text-shadow: 0 0 0.5px currentColor;
+}
+
+/* react-tel-input */
+.react-tel-input .form-control {
+  width: 100%;
+  border-top-right-radius: 0;
+  border-right: none !important;
+  border-bottom-right-radius: 0;
 }
