@@ -52,7 +52,7 @@ const validationSchema = Yup.object({
   pword: Yup.string().required('Password is required'),
   pword2: Yup.string().required('Confirm Password is required'),
   bday: Yup.date().required('Birthday is required'),
-  gender: Yup.array().required('Gender is required'),
+  gender: Yup.string().required('Gender is required'),
   phone: Yup.object({
     number: Yup.string().required('Phone is required')
   }),
