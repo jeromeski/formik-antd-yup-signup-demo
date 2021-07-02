@@ -2,17 +2,14 @@ import React from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { FormikDebug, Form } from 'formik-antd';
-import { message, Button, Row, Col, Space } from 'antd';
+import { Button, Row, Col } from 'antd';
 import FormInput from './FormInput';
 import FormDate from './FormDate';
 import FormPassword from './FormPassword';
 import FormSelect from './FormSelect';
 
-import PhoneInput from 'react-phone-input-2';
-import 'react-phone-input-2/lib/style.css';
-import FormPhoneNumber from './FormPhoneNumber';
-import FormAreaCode from './FormAreaCode';
 import FormPhone from './FormPhone';
+import FormCheckbox from './FormCheckbox';
 
 const initialValues = {
   fname: '',
@@ -25,7 +22,9 @@ const initialValues = {
   phone: {
     areaCode: '',
     number: ''
-  }
+  },
+  tos: '',
+  consent: ''
 };
 
 const genderOptions = [
@@ -49,6 +48,27 @@ const validationSchema = Yup.object({
     number: Yup.string().required('Phone is required')
   })
 });
+
+const tosLabel = () => (
+  <span style={{ fontSize: '12px' }}>
+    I have read and accept eZConsult's{' '}
+    <Button style={{ padding: '0', fontSize: '12px' }} type="link">
+      Terms of service
+    </Button>{' '}
+    for the use of this App and the Services to be provided under the App.
+  </span>
+);
+
+const consentLabel = () => (
+  <span style={{ fontSize: '12px' }}>
+    I consent to the collection, use, processing and disclosure of my personal
+    data by eZConsult in Terms of the{' '}
+    <Button style={{ padding: '0', fontSize: '12px' }} type="link">
+      Privacy Policy
+    </Button>{' '}
+    . I Confirm that all information I provide is accurate and complete.
+  </span>
+);
 
 function PatientsForm() {
   return (
@@ -137,6 +157,26 @@ function PatientsForm() {
                         label="Phone Number:"
                         formik={formik}
                       />
+                      <Row span={24}>
+                        <Col xs={24}>
+                          <FormCheckbox name="tos" label={tosLabel()} />
+                        </Col>
+                        <Col xs={24}>
+                          <FormCheckbox name="consent" label={consentLabel()} />
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col xs={24}>
+                          <Row span={24} justify="space-between">
+                            <Col>
+                              <Button type="link">Back to Login</Button>
+                            </Col>
+                            <Col>
+                              <Button type="primary">Next</Button>
+                            </Col>
+                          </Row>
+                        </Col>
+                      </Row>
                     </Col>
                   </Row>
                 </Col>

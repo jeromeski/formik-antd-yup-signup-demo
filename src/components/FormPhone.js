@@ -3,10 +3,12 @@ import { Form, Input } from 'formik-antd';
 import { Col, Row } from 'antd';
 import PhoneInput from 'react-phone-input-2';
 
+import 'react-phone-input-2/lib/style.css';
+
 function FormPhone(props) {
   const { name, label, _placeholder, formik, ...rest } = props;
-  console.log(name);
-  console.log(formik);
+  // console.log(name);
+  // console.log(formik);
   const { setFieldValue, field } = formik;
   return (
     <Form.Item name="phone.number" {...rest}>
@@ -23,7 +25,11 @@ function FormPhone(props) {
           />
         </Col>
         <Col xs={20}>
-          <Input type="tel" name="phone.number" className="styles_height35" />
+          <Input
+            type="tel"
+            name="phone.number"
+            className="styles_height35 styles_delBorder"
+          />
         </Col>
       </Row>
     </Form.Item>

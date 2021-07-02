@@ -1,8 +1,13 @@
 .styles_height35 {
-  height: 36px !important;
+  height: 35px !important;
   /* margin-left: 2rem; */
 }
 
 .styles_width100 {
   width: 100% !important;
+}
+
+.styles_delBorder {
+  border-left: none;
+  max-width: 100%;
 }

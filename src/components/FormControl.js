@@ -1,5 +1,6 @@
 import React from 'react';
 import FormAreaCode from './FormAreaCode';
+import FormCheckbox from './FormCheckbox';
 import FormDate from './FormDate';
 import FormInput from './FormInput';
 import FormPassword from './FormPassword';
@@ -26,6 +27,9 @@ function FormControl(props) {
     }
     case 'areaCode': {
       return <FormAreaCode />;
+    }
+    case 'checkbox': {
+      return <FormCheckbox />;
     }
     default:
       return null;
