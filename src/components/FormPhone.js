@@ -16,7 +16,7 @@ function FormPhone(props) {
         <Col xs={24}>
           <label>{label}</label>
         </Col>
-        <Col xs={4}>
+        <Col xs={6} md={4}>
           <PhoneInput
             name="name.areaCode"
             country={'ph'}
@@ -24,7 +24,7 @@ function FormPhone(props) {
             onChange={(value) => setFieldValue('phone.areaCode', value)}
           />
         </Col>
-        <Col xs={20}>
+        <Col xs={18} md={20}>
           <Input
             type="tel"
             name="phone.number"

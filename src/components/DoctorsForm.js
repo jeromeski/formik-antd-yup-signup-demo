@@ -71,7 +71,7 @@ const consentLabel = () => (
   </span>
 );
 
-function PatientsForm() {
+function DoctorsForm() {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleOk = () => {
@@ -214,4 +214,4 @@ function PatientsForm() {
   );
 }
 
-export default PatientsForm;
+export default DoctorsForm;

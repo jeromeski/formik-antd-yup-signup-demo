@@ -3,6 +3,7 @@ import FormAreaCode from './FormAreaCode';
 import FormCheckbox from './FormCheckbox';
 import FormDate from './FormDate';
 import FormInput from './FormInput';
+import FormModal from './FormModal';
 import FormPassword from './FormPassword';
 import FormPhone from './FormPhone';
 import FormSelect from './FormSelect';
@@ -30,6 +31,9 @@ function FormControl(props) {
     }
     case 'checkbox': {
       return <FormCheckbox />;
+    }
+    case 'modal': {
+      return <FormModal />;
     }
     default:
       return null;
