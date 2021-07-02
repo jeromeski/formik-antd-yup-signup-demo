@@ -11,6 +11,7 @@ import FormSelect from './FormSelect';
 import FormPhone from './FormPhone';
 import FormCheckbox from './FormCheckbox';
 import FormModal from './FormModal';
+import FormRadio from './FormRadio';
 
 const initialValues = {
   fname: '',
@@ -24,6 +25,7 @@ const initialValues = {
     areaCode: '',
     number: ''
   },
+  doctor: '',
   tos: '',
   consent: ''
 };
@@ -31,6 +33,12 @@ const initialValues = {
 const genderOptions = [
   { key: 'male', value: 'gOption1' },
   { key: 'female', value: 'gOption2' }
+];
+
+// always use label in radio button
+const doctorTypeOptions = [
+  { label: 'Primary Care Physician', value: 'dtOption1' },
+  { label: 'Specialist', value: 'dtOption2' }
 ];
 
 const onSubmit = (values) => {
@@ -47,7 +55,8 @@ const validationSchema = Yup.object({
   gender: Yup.array().required('Gender is required'),
   phone: Yup.object({
     number: Yup.string().required('Phone is required')
-  })
+  }),
+  doctor: Yup.string().required('Choose doctor type!')
 });
 
 const tosLabel = () => (
@@ -174,6 +183,16 @@ function DoctorsForm() {
                         label="Phone Number:"
                         formik={formik}
                       />
+                      <Row>
+                        <Col>
+                          <FormRadio
+                            control="radio"
+                            name="doctor"
+                            options={doctorTypeOptions}
+                            label="Select type:"
+                          />
+                        </Col>
+                      </Row>
                       <Row span={24}>
                         <Col xs={24}>
                           <FormCheckbox name="tos" label={tosLabel()} />

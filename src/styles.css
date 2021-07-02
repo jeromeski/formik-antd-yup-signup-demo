@@ -51,3 +51,21 @@
   outline: 0;
   box-shadow: none;
 }
+
+.ant-tabs-card.ant-tabs-top > .ant-tabs-nav .ant-tabs-tab-active,
+.ant-tabs-card.ant-tabs-top > div > .ant-tabs-nav .ant-tabs-tab-active {
+  border-bottom-color: violet;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab-active,
+.ant-tabs-card > div > .ant-tabs-nav .ant-tabs-tab-active {
+  color: white !important;
+  background: pink;
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: violet;
+  text-shadow: 0 0 0.5px currentColor;
+}

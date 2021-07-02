@@ -6,6 +6,7 @@ import FormInput from './FormInput';
 import FormModal from './FormModal';
 import FormPassword from './FormPassword';
 import FormPhone from './FormPhone';
+import FormRadio from './FormRadio';
 import FormSelect from './FormSelect';
 
 function FormControl(props) {
@@ -27,13 +28,16 @@ function FormControl(props) {
       return <FormPhone {...rest} />;
     }
     case 'areaCode': {
-      return <FormAreaCode />;
+      return <FormAreaCode {...rest} />;
     }
     case 'checkbox': {
-      return <FormCheckbox />;
+      return <FormCheckbox {...rest} />;
     }
     case 'modal': {
-      return <FormModal />;
+      return <FormModal {...rest} />;
+    }
+    case 'radio': {
+      return <FormRadio {...rest} />;
     }
     default:
       return null;
