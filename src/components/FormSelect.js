@@ -4,9 +4,9 @@ import { Form, Select } from 'formik-antd';
 const { Option } = Select;
 
 function FormSelect(props) {
-  const { name, label, options, ...rest } = props;
+  const { name, label, options } = props;
   return (
-    <Form.Item name={name} {...rest}>
+    <Form.Item name={name}>
       <label htmlFor={name}>{label}</label>
       <Select name={name}>
         {options.map((option) => {

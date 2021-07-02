@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { FormikDebug, Form } from 'formik-antd';
+import { FormikDebug, Form, SubmitButton } from 'formik-antd';
 import { Button, Row, Col } from 'antd';
 import FormInput from './FormInput';
 import FormDate from './FormDate';
@@ -161,18 +161,18 @@ function PatientsForm() {
                         <Col xs={24}>
                           <FormCheckbox name="tos" label={tosLabel()} />
                         </Col>
-                        <Col xs={24}>
+                        <Col xs={24} style={{ marginTop: '10px' }}>
                           <FormCheckbox name="consent" label={consentLabel()} />
                         </Col>
                       </Row>
-                      <Row>
+                      <Row style={{ marginTop: '10px' }}>
                         <Col xs={24}>
                           <Row span={24} justify="space-between">
                             <Col>
                               <Button type="link">Back to Login</Button>
                             </Col>
                             <Col>
-                              <Button type="primary">Next</Button>
+                              <SubmitButton type="primary">Next</SubmitButton>
                             </Col>
                           </Row>
                         </Col>
