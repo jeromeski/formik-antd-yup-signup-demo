@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { FormikDebug, Form, SubmitButton } from 'formik-antd';
+import differenceInYears from 'date-fns/differenceInYears';
+
 import { Button, Row, Col } from 'antd';
 import FormInput from './FormInput';
 import FormDate from './FormDate';
@@ -62,7 +64,12 @@ const validationSchema = Yup.object({
   pword2: Yup.string()
     .required('This field is required')
     .oneOf([Yup.ref('pword'), null], 'Passwords must match'),
-  bday: Yup.string().required('Birthday is required').nullable(),
+  bday: Yup.date()
+    .test('dob', 'You should be 18+ to register!', function (value) {
+      return differenceInYears(new Date(), new Date(value)) >= 18;
+    })
+    .nullable()
+    .required('Birthday is required!'),
   gender: Yup.string().required('Gender is required'),
   phone: Yup.object({
     number: Yup.string()
