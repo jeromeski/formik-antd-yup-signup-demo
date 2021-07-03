@@ -39,8 +39,27 @@ const validationSchema = Yup.object({
   fname: Yup.string().required('First name is required'),
   lname: Yup.string().required('Last name is required'),
   email: Yup.string().required('Email is required'),
-  pword: Yup.string().required('Password is required'),
-  pword2: Yup.string().required('Confirm Password is required'),
+  pword: Yup.string()
+    .required('Password is required')
+    .min(8, 'Too short!')
+    .test('isValid', 'Invalid format!', (value) => {
+      const upperCase = /[A-Z]/.test(value);
+      const lowerCase = /[a-z]/.test(value);
+      const number = /[0-9]/.test(value);
+      const specialCharacters = /[_!#$%&'*+/=?`{|}~^.-]/.test(value);
+      let validConditions = 0;
+      const requiredValidConditions = 4;
+      const conditions = [upperCase, lowerCase, number, specialCharacters];
+      conditions.forEach((condition) => {
+        return condition ? validConditions++ : null;
+      });
+      if (validConditions === requiredValidConditions) {
+        return true;
+      } else return false;
+    }),
+  pword2: Yup.string()
+    .required('This field is required')
+    .oneOf([Yup.ref('pword'), null], 'Passwords must match'),
   bday: Yup.date().required('Birthday is required'),
   gender: Yup.string().required('Gender is required'),
   phone: Yup.object({
