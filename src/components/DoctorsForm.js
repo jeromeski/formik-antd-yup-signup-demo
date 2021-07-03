@@ -82,11 +82,11 @@ const validationSchema = Yup.object({
     .required('This field is required')
     .oneOf([Yup.ref('pword'), null], 'Passwords must match'),
   bday: Yup.date()
+    .required('Birthday is required!')
     .test('dob', 'You should be 18+ to register!', function (value) {
       return differenceInYears(new Date(), new Date(value)) >= 18;
     })
-    .nullable()
-    .required('Birthday is required!'),
+    .nullable(),
   gender: Yup.string().required('Gender is required'),
   phone: Yup.object({
     number: Yup.string()
