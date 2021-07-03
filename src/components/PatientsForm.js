@@ -25,7 +25,7 @@ const initialValues = {
   bday: '',
   gender: '',
   phone: {
-    areaCode: '',
+    areaCode: '63',
     number: ''
   },
   tos: '',
