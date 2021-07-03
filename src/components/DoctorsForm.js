@@ -81,7 +81,7 @@ const validationSchema = Yup.object({
   pword2: Yup.string()
     .required('This field is required')
     .oneOf([Yup.ref('pword'), null], 'Passwords must match'),
-  bday: Yup.date().required('Birthday is required'),
+  bday: Yup.string().required('Birthday is required'),
   gender: Yup.string().required('Gender is required'),
   phone: Yup.object({
     number: Yup.string()
@@ -225,7 +225,7 @@ function DoctorsForm() {
                         <Col xs={12}>
                           <FormDate
                             control="date"
-                            name="date"
+                            name="bday"
                             label="Birthday:"
                           />
                         </Col>
