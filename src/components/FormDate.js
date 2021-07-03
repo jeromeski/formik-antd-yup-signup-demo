@@ -1,6 +1,6 @@
 import React from 'react';
 import { DatePicker, Form } from 'formik-antd';
-import moment from 'moment';
+// import moment from 'moment';
 
 function FormDate(props) {
   const { name, label, ...rest } = props;
@@ -10,8 +10,7 @@ function FormDate(props) {
       <DatePicker
         format={'MM/DD/YYYY'}
         name={name}
-        // placeholder={label}
-        defaultValue={moment()}
+        // placeholder={moment()}
         className="styles_width100"
       />
     </Form.Item>

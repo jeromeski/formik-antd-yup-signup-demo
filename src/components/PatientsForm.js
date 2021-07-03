@@ -38,7 +38,9 @@ const genderOptions = [
 const validationSchema = Yup.object({
   fname: Yup.string().required('First name is required'),
   lname: Yup.string().required('Last name is required'),
-  email: Yup.string().required('Email is required'),
+  email: Yup.string()
+    .email('Invalid email format!')
+    .required('Email is required'),
   pword: Yup.string()
     .required('Password is required')
     .min(8, 'Too short!')
@@ -60,10 +62,34 @@ const validationSchema = Yup.object({
   pword2: Yup.string()
     .required('This field is required')
     .oneOf([Yup.ref('pword'), null], 'Passwords must match'),
-  bday: Yup.date().required('Birthday is required'),
+  bday: Yup.string().required('Birthday is required'),
   gender: Yup.string().required('Gender is required'),
   phone: Yup.object({
-    number: Yup.string().required('Phone is required')
+    number: Yup.string()
+      .required('Phone is required')
+      .test(
+        'checkPhNumber',
+        'Phone Number format should be "923123456"',
+        (value) => {
+          const isLengthValid = /[0-9]{11}/.test(value);
+          const hasOnlyNums = /[A-Za-z_!#$%&'*+/=?`{|}~^.-]/.test(value);
+          const noStartZero = /^[0]/.test(value);
+
+          const conditions = [isLengthValid, hasOnlyNums, noStartZero];
+
+          let invalidConditions = 0;
+
+          conditions.map((option) => {
+            return option ? invalidConditions++ : null;
+          });
+
+          if (invalidConditions) {
+            return false;
+          } else {
+            return true;
+          }
+        }
+      )
   })
 });
 
@@ -190,7 +216,7 @@ function PatientsForm() {
                         <Col xs={12}>
                           <FormDate
                             control="date"
-                            name="date"
+                            name="bday"
                             label="Birthday:"
                           />
                         </Col>
