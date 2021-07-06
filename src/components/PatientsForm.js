@@ -79,11 +79,17 @@ const validationSchema = Yup.object({
         'checkPhNumber',
         'Phone Number format should be "923123456"',
         (value) => {
-          const isLengthValid = /[0-9]{11}/.test(value);
+          const isLessThanTen = value.match(/\w/g).length < 10;
+          const isGreaterThanTen = value.match(/\w/g).length > 10;
           const hasOnlyNums = /[A-Za-z_!#$%&'*+/=?`{|}~^.-]/.test(value);
           const noStartZero = /^[0]/.test(value);
 
-          const conditions = [isLengthValid, hasOnlyNums, noStartZero];
+          const conditions = [
+            isLessThanTen,
+            isGreaterThanTen,
+            hasOnlyNums,
+            noStartZero
+          ];
 
           let invalidConditions = 0;
 
